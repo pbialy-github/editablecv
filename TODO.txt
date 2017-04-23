@@ -1,10 +1,11 @@
-- usunac .swp
++ usunac .swp
 - zamiast fontSize itp to classy i cssy
-- change color, do Page
-- dane kontaktowe
++ change color, do Page
++ dane kontaktowe
 - doswiadczenie
 - cechy/mocneStrony (scroll)
-- globalny ChangeButton
++ globalny ChangeButton
+- usunac index.js?
 
 
 

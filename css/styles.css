@@ -20,12 +20,13 @@ div.valCol {
     float: left;
 }
 
-div.rowDiv {
+div.dataMainDiv div.rowDiv {
     margin: 4px 0px 4px 20px;
+    height: 20px;
 }
 
 div.section {
-    margin: 10px 20px 0px 20px;
+    margin: 20px 20px 0px 20px;
 }
 
 input.editValCol {
@@ -45,3 +46,53 @@ span.colorsEditor {
     margin: 5px 0px 0px 35px;
 }
 
+div.experienceMainDiv div.valCol {
+    width: 100px;
+    /* margin: 2px 0px 0px 0px; */
+    float: left;
+}
+
+div.experienceMainDiv div.valCol.date {
+    width: 50px;
+}
+
+div.experienceMainDiv div.valCol.date>div {
+    font-size: 16px;
+}
+
+div.experienceMainDiv div.dateDash {
+    float: left;
+    margin: 0px 4px 0px 4px;
+    font-size: 16px;
+}
+
+div.experienceMainDiv div.valCol.position {
+    width: 340px;
+    margin: 0px 0px 0px 19px;
+    font-weight: bold;
+}
+
+div.experienceMainDiv ul.tasks {
+    /* color: brown; */
+    margin: 0px 0px 10px 0px;
+}
+
+div.experienceMainDiv li {
+    list-style-type: circle;
+    font-size: 14px;
+    margin: 0px 0px 0px 110px;
+}
+
+div.experienceMainDiv div.valCol.task {
+    width: 380px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+div.experienceMainDiv div.valCol.task * {
+    font-size: 14px;
+}
+
+div.experienceMainDiv div.rowDiv {
+    margin: 4px 0px 4px 20px;
+}

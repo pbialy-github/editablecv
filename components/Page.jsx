@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header.jsx';
-import Section from './Section.jsx';
+import DataSection from './DataSection.jsx';
+import ExperienceSection from './ExperienceSection.jsx';
+
 
 class Page extends React.Component {
 
@@ -40,7 +42,8 @@ class Page extends React.Component {
         return (
             <div style={myStyle}>
                 <Header changeModeFunc={this.changeMode} editMode={this.state.editMode} pageColor={this.state.pageColor} changePageColorFunc={this.changePageColor} />
-                <Section secId={'Dane kontaktowe'} editMode={this.state.editMode} pageColor={this.state.pageColor} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
+                <DataSection secId={'Dane kontaktowe'} editMode={this.state.editMode} pageColor={this.state.pageColor} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
+                <ExperienceSection secId={'Doświadczenie zawodowe'} editMode={this.state.editMode} pageColor={this.state.pageColor} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
             </div>
         );
     }
