@@ -17,18 +17,18 @@ class ValueField extends Field {
 
         return (
             <div style={myStyle}>
-                <p>{this.props.val}</p>
+                <span>{this.props.val}</span>
             </div>
         );
     }
 }
 
-ValueField.props = { //TODO nie da sie wyzej tego wsadzic?
-    val: React.PropTypes.string
-}
-
-ValueField.defaultProps = {
-    val: 'Ignacy Gąbka'
-}
+//ValueField.props = { //TODO nie da sie wyzej tego wsadzic?
+//    val: React.PropTypes.string
+//}
+//
+//ValueField.defaultProps = {
+//    val: 'Ignacy Gąbka'
+//}
 
 export default ValueField;

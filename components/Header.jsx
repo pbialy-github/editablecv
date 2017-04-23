@@ -22,8 +22,10 @@ class Header extends React.Component {
 	}
 
     updateState(e) {
+        //console.log('updateState e=' + e);
         //debugger;
         //this.setState({ data: e.target.value });
+        this.setState({ [e.target.id]: e.target.value });
         //this.setState(Object.assign({}, this.state, e));
     };
 
@@ -49,9 +51,9 @@ class Header extends React.Component {
         return (
             <div style={myStyle}>
                 {this.state.editMode ? (
-                <EditField data={this.state.job} updateState={this.updateState('job')} />
+                <EditField id={'job'} data={this.state.job} updateState={this.updateState} />
                 ) : (
-                <ValueField />
+                <ValueField val={this.state.job}/>
                 )}
                 <button id='changeHeader'>zzmien</button>
             </div>
