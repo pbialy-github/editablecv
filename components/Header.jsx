@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ValueField from './ValueField.jsx'; //bez jsx?
-import EditField from './EditField.jsx'; //bez jsx?
+import ValueField from './ValueField.jsx';
+import EditField from './EditField.jsx';
 
 import { validateName, validateJob } from './../validators/validators.js';
 
@@ -44,19 +44,11 @@ class Header extends React.Component {
 
     render() {
         const myStyle = {
-            //backgroundColor: 'yellow', //TODO - przeniesc do Page i dac do zmieniania
-            backgroundColor: this.props.pageColor, //TODO - przeniesc do Page i dac do zmieniania
-            //border: 'solid 2px',
-            //borderColor: '#979797',
+            backgroundColor: this.props.pageColor,
             width: '100%',
             height: 100,
             display: 'inline-table'
-            //margin: '60px auto 60px auto'
-            //style={{display: 'inline-block'}}
         }
-
-//        let editMode = false
-//        console.log(`editMode ${editMode}`);
 
         return (
             <div style={myStyle}>

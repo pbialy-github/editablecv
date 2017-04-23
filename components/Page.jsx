@@ -34,8 +34,6 @@ class Page extends React.Component {
             borderColor: '#979797',
             width: 595,
             height: 842,
-//            marginLeft: 'auto',
-//            marginRight: 'auto'
             margin: '60px auto 60px auto'
         }
 
