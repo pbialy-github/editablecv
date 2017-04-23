@@ -11,12 +11,18 @@ class Page extends React.Component {
 			pageColor: 'orange'
         };
         this.changeMode = this.changeMode.bind(this);
+        this.changePageColor = this.changePageColor.bind(this);
 
     }
 
     changeMode() {
         console.log(`changeMode editMode=${!this.state.editMode}`);
         this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
+    }
+
+    changePageColor(newColor) {
+        console.log(`changecolor ${newColor}`);
+        this.setState(Object.assign({}, this.state, {pageColor: newColor}));
     }
 
 
@@ -35,7 +41,7 @@ class Page extends React.Component {
 
         return (
             <div style={myStyle}>
-                <Header changeModeFunc={this.changeMode} editMode={this.state.editMode} pageColor={this.state.pageColor} />
+                <Header changeModeFunc={this.changeMode} editMode={this.state.editMode} pageColor={this.state.pageColor} changePageColorFunc={this.changePageColor} />
                 <Section secId={'Dane kontaktowe'} editMode={this.state.editMode} pageColor={this.state.pageColor} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
             </div>
         );

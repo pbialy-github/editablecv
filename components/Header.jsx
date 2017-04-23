@@ -19,6 +19,10 @@ class Header extends React.Component {
 
 	componentDidMount() {
 		document.getElementById('changeMode').addEventListener('click', this.props.changeModeFunc, false);
+        document.getElementById('changeColorRed').addEventListener('click', () => {this.props.changePageColorFunc('red')}, false);
+        document.getElementById('changeColorBlue').addEventListener('click', () => {this.props.changePageColorFunc('blue')}, false);
+        document.getElementById('changeColorOrange').addEventListener('click', () => {this.props.changePageColorFunc('orange')}, false);
+        document.getElementById('changeColorGreen').addEventListener('click', () => {this.props.changePageColorFunc('green')}, false);
 	}
 
     validateKey(key, value) {
@@ -58,10 +62,16 @@ class Header extends React.Component {
             <div style={myStyle}>
             {this.props.editMode ? (
                 <div style={{margin: '10px 20px 0px 20px'}}>
-                    <EditField styles={{fontSize:'24px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
-                    <EditField styles={{fontSize:'24px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
+                    <EditField styles={{fontSize:'26px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
+                    <EditField styles={{fontSize:'26px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
                     <br/>
-                    <EditField styles={{fontSize:'20px', width:'350px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
+                    <EditField styles={{fontSize:'20px', width:'300px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
+                    <span className='colorsEditor'>
+                        <button id='changeColorRed' className={'colorChanger'} style={{backgroundColor:'red'}} />
+                        <button id='changeColorBlue' className={'colorChanger'} style={{backgroundColor:'blue'}} />
+                        <button id='changeColorOrange' className={'colorChanger'} style={{backgroundColor:'orange'}} />
+                        <button id='changeColorGreen' className={'colorChanger'} style={{backgroundColor:'green'}} />
+                    </span>
                     <button id='changeMode' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Apply</button>
                 </div>
             ) : (
@@ -70,6 +80,12 @@ class Header extends React.Component {
                     <ValueField styles={{fontSize:'32px', marginLeft:'10px'}} val={this.state.surname}/>
                     <br/>
                     <ValueField styles={{fontSize:'24px'}} val={this.state.job}/>
+                    <span className='colorsEditor' style={{display:'none'}}>
+                        <button id='changeColorRed' />
+                        <button id='changeColorBlue' />
+                        <button id='changeColorOrange' />
+                        <button id='changeColorGreen' />
+                    </span>
                     <button id='changeMode' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Edit</button>
                 </div>
             )}

@@ -11,8 +11,22 @@ const validateJob = (job) => {
     return patt.test(job);
 }
 
+const validatePhone = (phone) => {
+    // no letters
+    const patt = /[^A-Za-z]$/;
+    return patt.test(phone);
+}
+
+const validateLength = (value, length=20) => {
+    const pattStr = '^.{0,len}$';
+    const patt = new RegExp(pattStr.replace('len', length));
+    return patt.test(value);
+}
+
 export {
     validateName,
-    validateJob
+    validateJob,
+    validatePhone,
+    validateLength
 }
 

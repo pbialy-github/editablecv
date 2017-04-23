@@ -3,30 +3,33 @@ import React from 'react';
 import ValueField from './ValueField.jsx'; //bez jsx?
 import EditField from './EditField.jsx'; //bez jsx?
 
-//import { validateName, validateJob } from './../validators/validators.js';
+import { validatePhone, validateLength } from './../validators/validators.js';
 
 class Section extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name: 'Alojzy',
-			surname: 'Mikser',
-            job: 'Spawacz',
-            editMode: false
+//            name: 'Alojzy',
+//			surname: 'Mikser',
+//            job: 'Spawacz',
+//            editMode: false
+            phone: '503112233',
+            email: 'wesoly_romek997@wp.pl',
+            www: 'javascript.crockford.com',
+            twitter: 'twitter.com/boredpand'
         };
         this.updateState = this.updateState.bind(this);
-        this.changeMode = this.changeMode.bind(this);
+        //  this.changeMode = this.changeMode.bind(this);
         //this.validateKey = this.validateKey.bind(this);
     };
 
     validateKey(key, value) {
-        if (key === 'name' || key === 'surname') {
-            return validateName(value);
-        } else if (key === 'job') {
-            return validateJob(value);
+        if (key === 'phone') {
+            return validatePhone(value);
+        } else {
+            return validateLength(value, 30);
         }
-        return true;
     }
 
     updateState(e) {
@@ -37,10 +40,10 @@ class Section extends React.Component {
         }
     };
 
-    changeMode() {
-        console.log(`changeMode editMode=${this.state.editMode}`);
-        this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
-    }
+//    changeMode() {
+//        console.log(`changeMode editMode=${this.state.editMode}`);
+//        this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
+//    }
 
     render() {
         const myStyle = {
@@ -58,6 +61,7 @@ class Section extends React.Component {
 
         return (
             <div style={myStyle}>
+                {/*
             {this.props.editMode ? (
                 <div style={{margin: '10px 20px 0px 20px'}}>
                     <EditField styles={{fontSize:'24px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
@@ -66,31 +70,47 @@ class Section extends React.Component {
                     <EditField styles={{fontSize:'20px', width:'350px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
                 </div>
             ) : (
+            */}
                 <div className={'section'}>
                     {/* TODO tutaj strzleczki do kolejnosci */}
                     <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
                     <br />
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Telefon'} />
-                        <ValueField classes={'valCol'} val={'503121212'} />
+                    {this.props.editMode ? (
+                        <EditField classes={'editValCol'} id={'phone'} val={this.state.phone} updateState={this.updateState} />
+                    ) : (
+                        <ValueField classes={'valCol'} val={this.state.phone} />
+                    )}
                         <br />
                     </div>
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'E-mail'} />
-                        <ValueField classes={'valCol'} val={'wesoly_romek997@wp.pl'} />
+                    {this.props.editMode ? (
+                        <EditField classes={'editValCol'} id={'email'} val={this.state.email} updateState={this.updateState} />
+                    ) : (
+                        <ValueField classes={'valCol'} val={this.state.email} />
+                    )}
                         <br />
                     </div>
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Strona WWW'} />
-                        <ValueField classes={'valCol'} val={'javascript.crockford.com'} />
+                    {this.props.editMode ? (
+                        <EditField classes={'editValCol'} id={'www'} val={this.state.www} updateState={this.updateState} />
+                    ) : (
+                        <ValueField classes={'valCol'} val={this.state.www} />
+                    )}
                         <br />
                     </div>
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Twitter'} />
-                        <ValueField classes={'valCol'} val={'twitter.com/boredpanda'} />
+                    {this.props.editMode ? (
+                        <EditField classes={'editValCol'} id={'twitter'} val={this.state.twitter} updateState={this.updateState} />
+                    ) : (
+                        <ValueField classes={'valCol'} val={this.state.twitter} />
+                    )}
                     </div>
                 </div>
-            )}
             </div>
         );
     }
