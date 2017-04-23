@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Field from './Field.jsx';
 
 class ValueField extends Field {
@@ -13,19 +15,21 @@ class ValueField extends Field {
             //display: 'inline-table'
             //margin: '60px auto 60px auto'
             //margin: '10px'
+            display: 'inline-block'
         }
 
         return (
             <div style={myStyle}>
-                <span>{this.props.val}</span>
+                <div style={this.props.styles} >{this.props.val}</div>
             </div>
         );
     }
 }
 
-//ValueField.props = { //TODO nie da sie wyzej tego wsadzic?
-//    val: React.PropTypes.string
-//}
+ValueField.props = {
+    val: PropTypes.string,
+    styles: PropTypes.object
+}
 //
 //ValueField.defaultProps = {
 //    val: 'Ignacy Gąbka'

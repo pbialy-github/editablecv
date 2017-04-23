@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Field from './Field.jsx';
 
 class EditField extends Field {
@@ -26,19 +28,27 @@ class EditField extends Field {
             //display: 'inline-table'
             //margin: '60px auto 60px auto'
             //margin: '10px'
+			display: 'inline-block',
+	//		width: '100px'
         }
 
         return (
             <div style={myStyle}>
-                <input id={this.props.id} value={this.props.data} onChange={this.props.updateState}/>
+                <input id={this.props.id} value={this.props.val} style={this.props.styles} onChange={this.props.updateState}/>
             </div>
         );
     }
 }
 
-//EditField.props = { //TODO nie da sie wyzej tego wsadzic?
-//    val: React.PropTypes.string
-//}
+
+EditField.props = {
+    id: PropTypes.string,
+    val: PropTypes.string,
+    styles: PropTypes.object,
+    onChange: PropTypes.func
+}
+
+
 //
 //EditField.defaultProps = {
 //    val: 'Ignacy Gąbka'

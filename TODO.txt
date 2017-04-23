@@ -1,0 +1,9 @@
+- usunac .swp
+- zamiast fontSize itp to classy i cssy
+- change color, do Page
+- dane kontaktowe
+- doswiadczenie
+- cechy/mocneStrony (scroll)
+
+
+

@@ -15,9 +15,9 @@ class Field extends React.Component {
         }
 
         return (
-            <div style={myStyle}>
+            <span style={myStyle}>
                 <p>not implemented!</p>
-            </div>
+            </span>
         );
     }
 }
