@@ -17,7 +17,7 @@ class Section extends React.Component {
             phone: '503112233',
             email: 'wesoly_romek997@wp.pl',
             www: 'javascript.crockford.com',
-            twitter: 'twitter.com/boredpand'
+            twitter: 'twitter.com/boredpanda'
         };
         this.updateState = this.updateState.bind(this);
         //  this.changeMode = this.changeMode.bind(this);
@@ -76,7 +76,7 @@ class Section extends React.Component {
                     <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
                     <br />
                     <div className='rowDiv'>
-                        <ValueField classes={'descCol'} val={'Telefon'} />
+                        <ValueField classes={'descCol'} val={'Telefon'} /> {/* TODO albo na sekcje beda rozne komponenty, albo tu trzeba bedzie jakas petle po tablicy przekazywanej zrobic */}
                     {this.props.editMode ? (
                         <EditField classes={'editValCol'} id={'phone'} val={this.state.phone} updateState={this.updateState} />
                     ) : (
@@ -104,6 +104,7 @@ class Section extends React.Component {
                     </div>
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Twitter'} />
+                 {/* TODO klikalny link? LinkField? */}
                     {this.props.editMode ? (
                         <EditField classes={'editValCol'} id={'twitter'} val={this.state.twitter} updateState={this.updateState} />
                     ) : (
