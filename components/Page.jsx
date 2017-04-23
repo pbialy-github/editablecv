@@ -4,6 +4,20 @@ import Section from './Section.jsx';
 
 class Page extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            editMode: false,
+			pageColor: 'orange'
+        };
+        this.changeMode = this.changeMode.bind(this);
+
+    }
+
+    changeMode() {
+        console.log(`changeMode editMode=${!this.state.editMode}`);
+        this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
+    }
 
 
     render() {
@@ -21,8 +35,8 @@ class Page extends React.Component {
 
         return (
             <div style={myStyle}>
-                <Header />
-                <Section secId={'Dane kontaktowe'} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
+                <Header changeModeFunc={this.changeMode} editMode={this.state.editMode} pageColor={this.state.pageColor} />
+                <Section secId={'Dane kontaktowe'} editMode={this.state.editMode} pageColor={this.state.pageColor} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
             </div>
         );
     }

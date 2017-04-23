@@ -20,10 +20,6 @@ class Section extends React.Component {
         //this.validateKey = this.validateKey.bind(this);
     };
 
-	componentDidMount() {
-		document.getElementById('changeHeader').addEventListener('click', this.changeMode, false);
-	}
-
     validateKey(key, value) {
         if (key === 'name' || key === 'surname') {
             return validateName(value);
@@ -62,18 +58,17 @@ class Section extends React.Component {
 
         return (
             <div style={myStyle}>
-            {this.state.editMode ? (
+            {this.props.editMode ? (
                 <div style={{margin: '10px 20px 0px 20px'}}>
                     <EditField styles={{fontSize:'24px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
                     <EditField styles={{fontSize:'24px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
                     <br/>
                     <EditField styles={{fontSize:'20px', width:'350px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
-                    <button id='changeHeader' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Apply</button>
                 </div>
             ) : (
                 <div className={'section'}>
                     {/* TODO tutaj strzleczki do kolejnosci */}
-                    <ValueField classes={'sectionHeader'} val={this.props.secId} style={{fontSize:'20px'}} />
+                    <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
                     <br />
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Telefon'} />
@@ -94,14 +89,6 @@ class Section extends React.Component {
                         <ValueField classes={'descCol'} val={'Twitter'} />
                         <ValueField classes={'valCol'} val={'twitter.com/boredpanda'} />
                     </div>
-
-                    {/*
-                    <ValueField styles={{fontSize:'32px'}} val={this.state.name}/>
-                    <ValueField styles={{fontSize:'32px', marginLeft:'10px'}} val={this.state.surname}/>
-                    <br/>
-                    <ValueField styles={{fontSize:'24px'}} val={this.state.job}/>
-                    */}
-                    <button id='changeHeader' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Edit</button>
                 </div>
             )}
             </div>

@@ -13,15 +13,12 @@ class Header extends React.Component {
             name: 'Alojzy',
 			surname: 'Mikser',
             job: 'Spawacz',
-            editMode: false
         };
         this.updateState = this.updateState.bind(this);
-        this.changeMode = this.changeMode.bind(this);
-        //this.validateKey = this.validateKey.bind(this);
     };
 
 	componentDidMount() {
-		document.getElementById('changeHeader').addEventListener('click', this.changeMode, false);
+		document.getElementById('changeMode').addEventListener('click', this.props.changeModeFunc, false);
 	}
 
     validateKey(key, value) {
@@ -41,14 +38,10 @@ class Header extends React.Component {
         }
     };
 
-    changeMode() {
-        console.log(`changeMode editMode=${this.state.editMode}`);
-        this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
-    }
-
     render() {
         const myStyle = {
-            backgroundColor: 'yellow', //TODO - przeniesc do Page i dac do zmieniania
+            //backgroundColor: 'yellow', //TODO - przeniesc do Page i dac do zmieniania
+            backgroundColor: this.props.pageColor, //TODO - przeniesc do Page i dac do zmieniania
             //border: 'solid 2px',
             //borderColor: '#979797',
             width: '100%',
@@ -63,13 +56,13 @@ class Header extends React.Component {
 
         return (
             <div style={myStyle}>
-            {this.state.editMode ? (
+            {this.props.editMode ? (
                 <div style={{margin: '10px 20px 0px 20px'}}>
                     <EditField styles={{fontSize:'24px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
                     <EditField styles={{fontSize:'24px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
                     <br/>
                     <EditField styles={{fontSize:'20px', width:'350px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
-                    <button id='changeHeader' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Apply</button>
+                    <button id='changeMode' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Apply</button>
                 </div>
             ) : (
                 <div style={{margin: '10px 20px 0px 20px'}}>
@@ -77,7 +70,7 @@ class Header extends React.Component {
                     <ValueField styles={{fontSize:'32px', marginLeft:'10px'}} val={this.state.surname}/>
                     <br/>
                     <ValueField styles={{fontSize:'24px'}} val={this.state.job}/>
-                    <button id='changeHeader' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Edit</button>
+                    <button id='changeMode' style={{float:'right', margin:'5px 20px 0px 0px', fontSize:'20px', width:'100px'}}>Edit</button>
                 </div>
             )}
             </div>

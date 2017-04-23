@@ -1,5 +1,7 @@
 div.sectionHeader {
-    color: green;
+    /* color: green; */
+    /* font-weight: bold; */
+    font-size: 20px;
 }
 
 div.descCol {
