@@ -4,6 +4,7 @@
 - dane kontaktowe
 - doswiadczenie
 - cechy/mocneStrony (scroll)
+- globalny ChangeButton
 
 
 

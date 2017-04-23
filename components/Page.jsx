@@ -1,7 +1,11 @@
 import React from 'react';
 import Header from './Header.jsx';
+import Section from './Section.jsx';
 
 class Page extends React.Component {
+
+
+
     render() {
 
         const myStyle = {
@@ -18,7 +22,7 @@ class Page extends React.Component {
         return (
             <div style={myStyle}>
                 <Header />
-                Hello World!!!
+                <Section secId={'Dane kontaktowe'} /> {/* TODO - tu ma byc np. 'Data', a nazwa sekcii edytowalna */}
             </div>
         );
     }

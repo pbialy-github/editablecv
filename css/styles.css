@@ -1,0 +1,23 @@
+div.sectionHeader {
+    color: green;
+}
+
+div.descCol {
+    width: 25%;
+    /* margin: 2px 0px 0px 20px; */
+    float: left;
+}
+
+div.valCol {
+    width: 40%;
+    /* margin: 2px 0px 0px 0px; */
+    float: left;
+}
+
+div.rowDiv {
+    margin: 2px 0px 2px 20px;
+}
+
+div.section {
+    margin: 10px 20px 0px 20px;
+}

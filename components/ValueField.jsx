@@ -19,7 +19,7 @@ class ValueField extends Field {
         }
 
         return (
-            <div style={myStyle}>
+            <div style={myStyle} className={this.props.classes}>
                 <div style={this.props.styles} >{this.props.val}</div>
             </div>
         );
@@ -28,6 +28,7 @@ class ValueField extends Field {
 
 ValueField.props = {
     val: PropTypes.string,
+    classes: PropTypes.string,
     styles: PropTypes.object
 }
 //
