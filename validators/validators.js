@@ -6,7 +6,7 @@ const validateLength = (value, length=20) => {
 
 const validateName = (name) => {
     // no digits, 1-12 chars
-    const patt = /^([^0-9]{1,12})$/;
+    const patt = /^([^0-9]{0,12})$/;
     return patt.test(name);
 }
 
