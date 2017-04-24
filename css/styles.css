@@ -93,10 +93,6 @@ div.experienceMainDiv div.editTask>input {
     width: 350px;
 }
 
-/*
-div.dataMainDiv div.editValCol>input {
-}
-*/
 div.experienceMainDiv div.valCol.date>div {
     font-size: 16px;
 }

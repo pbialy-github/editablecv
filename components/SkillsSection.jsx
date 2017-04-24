@@ -51,19 +51,6 @@ class SkillsSection extends React.Component {
         }
     };
 
-    updateStateFromList(expNr, taskNr, id, e) {
-        const val = e.target.value;
-        if (this.validateKey(id, val)) {
-            this.state.experiences[expNr].tasks[taskNr] = val;
-            this.setState({ experiences: this.state.experiences })
-        }
-    };
-
-    addTask(expNr) {
-        this.state.experiences[expNr].tasks.push('');
-        this.setState({ experiences: this.state.experiences })
-    };
-
     addSkill() {
         const newSkill = {
             name: '',
@@ -78,36 +65,15 @@ class SkillsSection extends React.Component {
         this.setState({ skills: this.state.skills })
     };
 
-    moveExpDown(expNr) {
-        const movedExp = this.state.experiences.splice(expNr, 1)[0];
-        this.state.experiences.splice(expNr+1, 0, movedExp);
-        this.setState({ experiences: this.state.experiences })
-    };
-
-    moveExpUp(expNr) {
-        const movedExp = this.state.experiences.splice(expNr, 1)[0];
-        this.state.experiences.splice(expNr-1, 0, movedExp);
-        this.setState({ experiences: this.state.experiences })
-    };
-
-    removeTask(expNr, taskNr) {
-        this.state.experiences[expNr].tasks.splice(taskNr, 1);
-        this.setState({ experiences: this.state.experiences })
-    };
-
     calcSkillVal(val) {
         return parseInt(val)/10;
     }
 
     render() {
         const myStyle = {
-            //border: 'solid 2px',
-            //borderColor: '#979797',
             width: '100%',
             height: 100,
             display: 'inline-table'
-            //margin: '60px auto 60px auto'
-            //style={{display: 'inline-block'}}
         }
 
         return (
@@ -131,12 +97,11 @@ class SkillsSection extends React.Component {
                         </div>
                     ) : (
                         <div className={'skillsAndProgress'}>
-                            <ValueField classes={'skillName'} val={skill.name || '&nbsp'} />
+                            <ValueField classes={'skillName'} val={skill.name || '--empty-skill--'} />
                             <div className={'skillProgress'}>
                                 <div className={'progress'}>
                                     <div className={'bar'} style={{width:skill.val, backgroundColor:this.props.pageColor}}></div>
                                 </div>
-
                             </div>
                             <br />
                         </div>

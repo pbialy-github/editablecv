@@ -1,4 +1,3 @@
-
 const validateLength = (value, length=20) => {
     const pattStr = '^.{0,len}$';
     const patt = new RegExp(pattStr.replace('len', length));

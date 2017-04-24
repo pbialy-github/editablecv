@@ -1,11 +1,11 @@
 + usunac .swp
-- zamiast fontSize itp to classy i cssy
++ zamiast fontSize itp to classy i cssy
 + change color, do Page
 + dane kontaktowe
 + doswiadczenie
-- cechy/mocneStrony (scroll)
++ cechy/mocneStrony (scroll)
 + globalny ChangeButton
-- usunac index.js?
-- usunac secId
++ usunac index.js?
++ usunac secId
 
 

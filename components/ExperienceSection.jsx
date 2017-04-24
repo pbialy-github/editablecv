@@ -34,17 +34,15 @@ class ExperienceSection extends React.Component {
                 dateTo: '03/2017',
                 position: 'Kasjer w Biedronce',
                 tasks: [
-                    'Obsługa klienta',
-                    'Układanie produktów',
-                    'Liczenie pieniędzy',
-                    'Transport utargu do banku za pomocą opancerzonego rowerka',
-                    'Spanie na zapleczu'
+                    'obsługa klienta',
+                    'układanie produktów',
+                    'liczenie pieniędzy',
+                    'transport utargu do banku za pomocą opancerzonego rowerka',
+                    'spanie na zapleczu'
                 ]
             }]
         };
         this.addExp = this.addExp.bind(this);
-        //this.removeTask = this.removeTask.bind(this);
-        //this.updateState = this.updateState.bind(this);
     };
 
     validateKey(key, value) {
@@ -85,7 +83,6 @@ class ExperienceSection extends React.Component {
             position: '',
             tasks: ['']
         }
-        //this.state.experiences.push(newExp);
         this.state.experiences.splice(0, 0, newExp);
         this.setState({ experiences: this.state.experiences })
     };
@@ -114,13 +111,9 @@ class ExperienceSection extends React.Component {
 
     render() {
         const myStyle = {
-            //border: 'solid 2px',
-            //borderColor: '#979797',
             width: '100%',
             height: 100,
             display: 'inline-table'
-            //margin: '60px auto 60px auto'
-            //style={{display: 'inline-block'}}
         }
 
         return (
