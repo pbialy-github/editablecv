@@ -23,10 +23,16 @@ const validatePhone = (phone) => {
     return patt.test(phone) && validateLength(phone);
 }
 
+const validateDate = (date) => {
+    const patt = /^[0-9]{0,2}\/[0-9]{0,4}$/;
+    return patt.test(date);
+}
+
 export {
     validateLength,
     validateName,
     validateJob,
-    validatePhone
+    validatePhone,
+    validateDate
 }
 

@@ -19,7 +19,6 @@ class DataSection extends React.Component {
             www: 'javascript.crockford.com',
             twitter: 'twitter.com/boredpanda'
         };
-        this.updateState = this.updateState.bind(this);
         //  this.changeMode = this.changeMode.bind(this);
         //this.validateKey = this.validateKey.bind(this);
     };
@@ -32,8 +31,7 @@ class DataSection extends React.Component {
         }
     }
 
-    updateState(e) {
-        const id = e.target.id;
+    updateState(id, e) {
         const val = e.target.value;
         if (this.validateKey(id, val)) {
             this.setState({ [id]: val });
@@ -61,16 +59,6 @@ class DataSection extends React.Component {
 
         return (
             <div style={myStyle} className='dataMainDiv'>
-                {/*
-            {this.props.editMode ? (
-                <div style={{margin: '10px 20px 0px 20px'}}>
-                    <EditField styles={{fontSize:'24px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
-                    <EditField styles={{fontSize:'24px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
-                    <br/>
-                    <EditField styles={{fontSize:'20px', width:'350px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
-                </div>
-            ) : (
-            */}
                 <div className={'section'}>
                     {/* TODO tutaj strzleczki do kolejnosci */}
                     <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
@@ -78,7 +66,7 @@ class DataSection extends React.Component {
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Telefon'} /> {/* TODO albo na sekcje beda rozne komponenty, albo tu trzeba bedzie jakas petle po tablicy przekazywanej zrobic */}
                     {this.props.editMode ? (
-                        <EditField classes={'editValCol'} id={'phone'} val={this.state.phone} updateState={this.updateState} />
+                        <EditField classes={'editValCol'} id={'phone'} val={this.state.phone} updateState={this.updateState.bind(this, 'phone')} />
                     ) : (
                         <ValueField classes={'valCol'} val={this.state.phone} />
                     )}
@@ -87,7 +75,7 @@ class DataSection extends React.Component {
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'E-mail'} />
                     {this.props.editMode ? (
-                        <EditField classes={'editValCol'} id={'email'} val={this.state.email} updateState={this.updateState} />
+                        <EditField classes={'editValCol'} val={this.state.email} updateState={this.updateState.bind(this, 'email')} />
                     ) : (
                         <ValueField classes={'valCol'} val={this.state.email} />
                     )}
@@ -96,7 +84,7 @@ class DataSection extends React.Component {
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Strona WWW'} />
                     {this.props.editMode ? (
-                        <EditField classes={'editValCol'} id={'www'} val={this.state.www} updateState={this.updateState} />
+                        <EditField classes={'editValCol'} val={this.state.www} updateState={this.updateState.bind(this, 'www')} />
                     ) : (
                         <ValueField classes={'valCol'} val={this.state.www} />
                     )}
@@ -106,7 +94,7 @@ class DataSection extends React.Component {
                         <ValueField classes={'descCol'} val={'Twitter'} />
                  {/* TODO klikalny link? LinkField? */}
                     {this.props.editMode ? (
-                        <EditField classes={'editValCol'} id={'twitter'} val={this.state.twitter} updateState={this.updateState} />
+                        <EditField classes={'editValCol'} val={this.state.twitter} updateState={this.updateState.bind(this, 'twitter')} />
                     ) : (
                         <ValueField classes={'valCol'} val={this.state.twitter} />
                     )}

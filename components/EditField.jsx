@@ -33,8 +33,8 @@ class EditField extends Field {
         }
 
         return (
-            <div style={myStyle}>
-                <input className={this.props.classes} id={this.props.id} value={this.props.val} style={this.props.styles} onChange={this.props.updateState} />
+            <div style={myStyle} className={this.props.classes}>
+                <input value={this.props.val} style={this.props.styles} onChange={this.props.updateState} />
             </div>
         );
     }
@@ -42,7 +42,6 @@ class EditField extends Field {
 
 
 EditField.props = {
-    id: PropTypes.string,
     val: PropTypes.string,
     styles: PropTypes.object,
     onChange: PropTypes.func

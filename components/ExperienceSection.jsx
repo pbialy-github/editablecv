@@ -1,9 +1,10 @@
 import React from 'react';
+//import update from 'react-addons-update';
 
 import ValueField from './ValueField.jsx';
 import EditField from './EditField.jsx';
 
-import { validatePhone, validateLength } from './../validators/validators.js';
+import { validateDate, validateLength } from './../validators/validators.js';
 
 class ExperienceSection extends React.Component {
 
@@ -14,10 +15,10 @@ class ExperienceSection extends React.Component {
 //			surname: 'Mikser',
 //            job: 'Spawacz',
 //            editMode: false
-            phone: '503112233',
-            email: 'wesoly_romek997@wp.pl',
-            www: 'javascript.crockford.com',
-            twitter: 'twitter.com/boredpanda',
+//            phone: '503112233',
+//            email: 'wesoly_romek997@wp.pl',
+//            www: 'javascript.crockford.com',
+//            twitter: 'twitter.com/boredpanda',
 
             // TODO to w sumie przydałoby się przenieść do jakiś zaślepek
             experiences: [{
@@ -51,31 +52,38 @@ class ExperienceSection extends React.Component {
                 ]
             }]
         };
-        this.updateState = this.updateState.bind(this);
-        //  this.changeMode = this.changeMode.bind(this);
-        //this.validateKey = this.validateKey.bind(this);
     };
 
     validateKey(key, value) {
-        if (key === 'phone') {
-            return validatePhone(value);
-        } else {
+        if (key === 'dateFrom' || key === 'dateTo') {
+            return validateDate(value);
+        } else if (key === 'task') {
+            return validateLength(value, 60);
+        }else {
             return validateLength(value, 30);
         }
     }
 
-    updateState(e) {
-        const id = e.target.id;
+    updateState(expNr, id,  e) {
         const val = e.target.value;
         if (this.validateKey(id, val)) {
-            this.setState({ [id]: val });
+            this.state.experiences[expNr] = Object.assign({}, this.state.experiences[expNr], {[id]: val});
+            this.setState({ experiences: this.state.experiences })
         }
     };
 
-//    changeMode() {
-//        console.log(`changeMode editMode=${this.state.editMode}`);
-//        this.setState(Object.assign({}, this.state, {editMode: !this.state.editMode}));
-//    }
+    updateStateFromList(expNr, taskNr, id, e) {
+        const val = e.target.value;
+        if (this.validateKey(id, val)) {
+            //if (val === '') {
+            if (false) {
+                this.state.experiences[expNr].tasks.splice(taskNr, 1);
+            } else {
+                this.state.experiences[expNr].tasks[taskNr] = val;
+            }
+            this.setState({ experiences: this.state.experiences })
+        }
+    };
 
     render() {
         const myStyle = {
@@ -98,19 +106,21 @@ class ExperienceSection extends React.Component {
                     <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
 
 
-                {this.state.experiences.map((exp, i) => (
-                    <div className='rowDiv' key={i}>
+                {this.state.experiences.map((exp, expNr) => (
+                    <div className='rowDiv' key={expNr}>
                     {this.props.editMode ? (
                         <div>
-                            <ValueField classes={'valCol date'} val={exp.dateFrom} />
-                            <div className={'dateDash'}>-</div>
-                            <ValueField classes={'valCol date'} val={exp.dateTo} />
-                            <ValueField classes={'valCol position'} val={exp.position} />
+                            <div className={'datesForExp'}>
+                                <EditField classes={'editDate'} val={exp.dateFrom} updateState={this.updateState.bind(this, expNr, 'dateFrom')}/>
+                                <div className={'dateDash'}>-</div>
+                                <EditField classes={'editDate'} val={exp.dateTo} updateState={this.updateState.bind(this, expNr, 'dateTo')}/>
+                            </div>
+                            <EditField classes={'editPosition'} val={exp.position} updateState={this.updateState.bind(this, expNr, 'position')}/>
                             <ul className={'tasks'}>
                             <br />
-                        {exp.tasks.map((task, j) => (
-                            <li key={j}>
-                                <ValueField classes={'valCol task'} val={task} />
+                        {exp.tasks.map((task, taskNr) => (
+                            <li key={taskNr}>
+                                <EditField classes={'editTask'} val={task} updateState={this.updateStateFromList.bind(this, expNr, taskNr, 'task')} />
                                 <br />
                             </li>
                         ))}
@@ -118,9 +128,11 @@ class ExperienceSection extends React.Component {
                         </div>
                     ) : (
                         <div>
-                            <ValueField classes={'valCol date'} val={exp.dateFrom} />
-                            <div className={'dateDash'}>-</div>
-                            <ValueField classes={'valCol date'} val={exp.dateTo} />
+                            <div className={'datesForExp'}>
+                                <ValueField classes={'valCol date'} val={exp.dateFrom} />
+                                <div className={'dateDash'}>-</div>
+                                <ValueField classes={'valCol date'} val={exp.dateTo} />
+                            </div>
                             <ValueField classes={'valCol position'} val={exp.position} />
                             <ul className={'tasks'}>
                             <br />

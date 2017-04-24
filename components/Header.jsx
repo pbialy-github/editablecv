@@ -14,7 +14,6 @@ class Header extends React.Component {
 			surname: 'Mikser',
             job: 'Spawacz',
         };
-        this.updateState = this.updateState.bind(this);
     };
 
 	componentDidMount() {
@@ -34,8 +33,7 @@ class Header extends React.Component {
         return true;
     }
 
-    updateState(e) {
-        const id = e.target.id;
+    updateState(id, e) {
         const val = e.target.value;
         if (this.validateKey(id, val)) {
             this.setState({ [id]: val });
@@ -54,10 +52,10 @@ class Header extends React.Component {
             <div style={myStyle}>
             {this.props.editMode ? (
                 <div style={{margin: '10px 20px 0px 20px'}}>
-                    <EditField styles={{fontSize:'26px', width:'250px'}} id={'name'} val={this.state.name} updateState={this.updateState} />
-                    <EditField styles={{fontSize:'26px', width:'250px', marginLeft:'20px'}} id={'surname'} val={this.state.surname} updateState={this.updateState} />
+                    <EditField styles={{fontSize:'26px', width:'250px'}} val={this.state.name} updateState={this.updateState.bind(this, 'name')} />
+                    <EditField styles={{fontSize:'26px', width:'250px', marginLeft:'20px'}} val={this.state.surname} updateState={this.updateState.bind(this, 'surname')} />
                     <br/>
-                    <EditField styles={{fontSize:'20px', width:'300px', marginTop:'5px'}} id={'job'} val={this.state.job} updateState={this.updateState} />
+                    <EditField styles={{fontSize:'20px', width:'300px', marginTop:'5px'}} val={this.state.job} updateState={this.updateState.bind(this, 'job')} />
                     <span className='colorsEditor'>
                         <button id='changeColorRed' className={'colorChanger'} style={{backgroundColor:'red'}} />
                         <button id='changeColorBlue' className={'colorChanger'} style={{backgroundColor:'blue'}} />

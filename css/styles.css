@@ -29,7 +29,7 @@ div.section {
     margin: 20px 20px 0px 20px;
 }
 
-input.editValCol {
+div.dataMainDiv div.editValCol>input {
     font-size: 11px;
     width: 250px;
 }
@@ -56,6 +56,42 @@ div.experienceMainDiv div.valCol.date {
     width: 50px;
 }
 
+div.experienceMainDiv div.editDate {
+    float: left;
+    margin-top: -2px;
+}
+
+div.experienceMainDiv div.editDate>input {
+    font-size: 13px;
+    width: 48px;
+}
+
+
+div.experienceMainDiv div.editPosition {
+    float: left;
+    margin-top: -2px;
+    margin-left: 20px;
+}
+
+div.experienceMainDiv div.editPosition>input {
+    font-size: 13px;
+    width: 250px;
+}
+
+div.experienceMainDiv div.editTask {
+    float: left;
+    margin-top: -2px;
+}
+
+div.experienceMainDiv div.editTask>input {
+    font-size: 12px;
+    width: 350px;
+}
+
+/*
+div.dataMainDiv div.editValCol>input {
+}
+*/
 div.experienceMainDiv div.valCol.date>div {
     font-size: 16px;
 }
@@ -84,8 +120,10 @@ div.experienceMainDiv li {
 }
 
 div.experienceMainDiv div.valCol.task {
-    width: 380px;
+    width: 360px;
     margin: 0px 0px 0px 0px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
@@ -95,4 +133,8 @@ div.experienceMainDiv div.valCol.task * {
 
 div.experienceMainDiv div.rowDiv {
     margin: 4px 0px 4px 20px;
+}
+
+div.experienceMainDiv div.datesForExp {
+    /* width: 200px; */
 }
