@@ -138,7 +138,7 @@ class ExperienceSection extends React.Component {
                             <br />
                             <div className={'moveAndTasks'}>
                                 <div className={'moveExpButtons'}>
-                                    {(expNr > 0) && (
+                                {(expNr > 0) && (
                                     <button className={'expMoveUp'} onClick={this.moveExpUp.bind(this, expNr)}>⮝</button>
                                 )}
                                 {(expNr < this.state.experiences.length - 1) && (
@@ -179,8 +179,6 @@ class ExperienceSection extends React.Component {
                     )}
                     </div>
                 ))}
-
-
                 </div>
             </div>
         );
