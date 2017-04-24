@@ -61,7 +61,7 @@ class DataSection extends React.Component {
             <div style={myStyle} className='dataMainDiv'>
                 <div className={'section'}>
                     {/* TODO tutaj strzleczki do kolejnosci */}
-                    <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
+                    <ValueField classes={'sectionHeader'} val={'Dane kontaktowe'} styles={{color:this.props.pageColor}} />
                     <br />
                     <div className='rowDiv'>
                         <ValueField classes={'descCol'} val={'Telefon'} /> {/* TODO albo na sekcje beda rozne komponenty, albo tu trzeba bedzie jakas petle po tablicy przekazywanej zrobic */}

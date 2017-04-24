@@ -28,11 +28,18 @@ const validateDate = (date) => {
     return patt.test(date);
 }
 
+const validateOnlyDigits = (digits, n) => {
+    const pattStr = '^[0-9]{0,n}$';
+    const patt = new RegExp(pattStr.replace('n', n));
+    return patt.test(digits);
+}
+
 export {
     validateLength,
     validateName,
     validateJob,
     validatePhone,
-    validateDate
+    validateDate,
+    validateOnlyDigits
 }
 

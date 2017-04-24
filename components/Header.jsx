@@ -44,7 +44,7 @@ class Header extends React.Component {
         const myStyle = {
             backgroundColor: this.props.pageColor,
             width: '100%',
-            height: 100,
+            height: '92px',
             display: 'inline-table'
         }
 

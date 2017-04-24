@@ -52,7 +52,7 @@ class ExperienceSection extends React.Component {
             return validateDate(value);
         } else if (key === 'task') {
             return validateLength(value, 60);
-        }else {
+        } else {
             return validateLength(value, 30);
         }
     }
@@ -126,8 +126,7 @@ class ExperienceSection extends React.Component {
         return (
             <div style={myStyle} className='experienceMainDiv'>
                 <div className={'section'}>
-                    {/* TODO tutaj strzleczki do kolejnosci */}
-                    <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
+                    <ValueField classes={'sectionHeader'} val={'Doświadczenie zawodowe'} styles={{color:this.props.pageColor}} />
                     {this.props.editMode && (<button className={'addExp'} onClick={this.addExp}>+</button>)}
                 {this.state.experiences.map((exp, expNr) => (
                     <div className='rowDiv' key={expNr}>
