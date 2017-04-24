@@ -12,8 +12,8 @@ class ExperienceSection extends React.Component {
         this.state = {
             // TODO to w sumie przydałoby się przenieść do jakiś zaślepek
             experiences: [{
-                dateFrom: '05/2014',
-                dateTo: '02/2016',
+                dateFrom: '11/2016',
+                dateTo: '03/2017',
                 position: 'Programista C++',
                 tasks: [
                     'projektowanie aplikacji backendowej dla NASA',
@@ -30,8 +30,8 @@ class ExperienceSection extends React.Component {
                     'szkolenia dla pracowników'
                 ]
             }, {
-                dateFrom: '11/2016',
-                dateTo: '03/2017',
+                dateFrom: '05/2014',
+                dateTo: '02/2016',
                 position: 'Kasjer w Biedronce',
                 tasks: [
                     'obsługa klienta',
