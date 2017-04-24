@@ -1,5 +1,4 @@
 import React from 'react';
-//import update from 'react-addons-update';
 
 import ValueField from './ValueField.jsx';
 import EditField from './EditField.jsx';
@@ -11,15 +10,6 @@ class ExperienceSection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-//            name: 'Alojzy',
-//			surname: 'Mikser',
-//            job: 'Spawacz',
-//            editMode: false
-//            phone: '503112233',
-//            email: 'wesoly_romek997@wp.pl',
-//            www: 'javascript.crockford.com',
-//            twitter: 'twitter.com/boredpanda',
-
             // TODO to w sumie przydałoby się przenieść do jakiś zaślepek
             experiences: [{
                 dateFrom: '05/2014',
@@ -52,6 +42,9 @@ class ExperienceSection extends React.Component {
                 ]
             }]
         };
+        this.addExp = this.addExp.bind(this);
+        //this.removeTask = this.removeTask.bind(this);
+        //this.updateState = this.updateState.bind(this);
     };
 
     validateKey(key, value) {
@@ -75,14 +68,36 @@ class ExperienceSection extends React.Component {
     updateStateFromList(expNr, taskNr, id, e) {
         const val = e.target.value;
         if (this.validateKey(id, val)) {
-            //if (val === '') {
-            if (false) {
-                this.state.experiences[expNr].tasks.splice(taskNr, 1);
-            } else {
-                this.state.experiences[expNr].tasks[taskNr] = val;
-            }
+            this.state.experiences[expNr].tasks[taskNr] = val;
             this.setState({ experiences: this.state.experiences })
         }
+    };
+
+    addTask(expNr) {
+        this.state.experiences[expNr].tasks.push('');
+        this.setState({ experiences: this.state.experiences })
+    };
+
+    addExp() {
+        const newExp = {
+            dateFrom: '10/2000',
+            dateTo: '10/2100',
+            position: '',
+            tasks: ['']
+        }
+        //this.state.experiences.push(newExp);
+        this.state.experiences.splice(0, 0, newExp);
+        this.setState({ experiences: this.state.experiences })
+    };
+
+    removeExp(expNr) {
+        this.state.experiences.splice(expNr, 1);
+        this.setState({ experiences: this.state.experiences })
+    };
+
+    removeTask(expNr, taskNr) {
+        this.state.experiences[expNr].tasks.splice(taskNr, 1);
+        this.setState({ experiences: this.state.experiences })
     };
 
     render() {
@@ -96,16 +111,12 @@ class ExperienceSection extends React.Component {
             //style={{display: 'inline-block'}}
         }
 
-//        let editMode = false
-//        console.log(`editMode ${editMode}`);
-
         return (
             <div style={myStyle} className='experienceMainDiv'>
                 <div className={'section'}>
                     {/* TODO tutaj strzleczki do kolejnosci */}
                     <ValueField classes={'sectionHeader'} val={this.props.secId} styles={{color:this.props.pageColor}} />
-
-
+                    {this.props.editMode && (<button className={'addExp'} onClick={this.addExp}>+</button>)}
                 {this.state.experiences.map((exp, expNr) => (
                     <div className='rowDiv' key={expNr}>
                     {this.props.editMode ? (
@@ -116,11 +127,15 @@ class ExperienceSection extends React.Component {
                                 <EditField classes={'editDate'} val={exp.dateTo} updateState={this.updateState.bind(this, expNr, 'dateTo')}/>
                             </div>
                             <EditField classes={'editPosition'} val={exp.position} updateState={this.updateState.bind(this, expNr, 'position')}/>
+                            <button className={'expRemove'} onClick={this.removeExp.bind(this, expNr)}>-</button>
+                            <button className={'addTask'} onClick={this.addTask.bind(this, expNr)}>+</button>
                             <ul className={'tasks'}>
                             <br />
                         {exp.tasks.map((task, taskNr) => (
                             <li key={taskNr}>
                                 <EditField classes={'editTask'} val={task} updateState={this.updateStateFromList.bind(this, expNr, taskNr, 'task')} />
+                                {/*  <button id='changeColorBlue' className={'colorChanger'} style={{backgroundColor:'blue'}} /> */}
+                                <button className={'taskRemove'} onClick={this.removeTask.bind(this, expNr, taskNr)}>-</button>
                                 <br />
                             </li>
                         ))}

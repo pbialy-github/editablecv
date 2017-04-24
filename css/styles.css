@@ -104,7 +104,7 @@ div.experienceMainDiv div.dateDash {
 
 div.experienceMainDiv div.valCol.position {
     width: 340px;
-    margin: 0px 0px 0px 19px;
+    margin: -1px 0px 0px 19px;
     font-weight: bold;
 }
 
@@ -138,3 +138,34 @@ div.experienceMainDiv div.rowDiv {
 div.experienceMainDiv div.datesForExp {
     /* width: 200px; */
 }
+
+div.experienceMainDiv button.taskRemove {
+    height: 17px;
+    width: 17px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+div.experienceMainDiv button.expRemove {
+    height: 17px;
+    width: 17px;
+    margin-left: 5px;
+    font-size: 10px;
+    float: left;
+}
+
+div.experienceMainDiv button.addTask {
+    height: 17px;
+    width: 17px;
+    margin-left: 78px;
+    font-size: 10px;
+    float: left;
+}
+
+div.experienceMainDiv button.addExp {
+    height: 17px;
+    width: 17px;
+    margin: -11px 0px 0px 20px;
+    font-size: 10px;
+}
+
