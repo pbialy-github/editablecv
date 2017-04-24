@@ -109,7 +109,11 @@ div.experienceMainDiv div.valCol.position {
 }
 
 div.experienceMainDiv ul.tasks {
-    /* color: brown; */
+    margin: 0px 0px 10px 0px;
+}
+
+div.experienceMainDiv ul.tasksEditMode {
+    /* margin: -27px 0px 10px 0px; */
     margin: 0px 0px 10px 0px;
 }
 
@@ -168,4 +172,24 @@ div.experienceMainDiv button.addExp {
     margin: -11px 0px 0px 20px;
     font-size: 10px;
 }
+
+div.experienceMainDiv button.expMove {
+    height: 17px;
+    width: 17px;
+    margin-left: -18px;
+    font-size: 10px;
+    float: left;
+}
+
+div.experienceMainDiv button.expMoveUp,
+div.experienceMainDiv button.expMoveDown {
+    height: 24px;
+    width: 26px;
+    font-size: 12px;
+}
+
+div.experienceMainDiv div.moveExpButtons {
+    height: 0px;
+}
+
 

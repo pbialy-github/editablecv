@@ -2,10 +2,10 @@
 - zamiast fontSize itp to classy i cssy
 + change color, do Page
 + dane kontaktowe
-- doswiadczenie
++ doswiadczenie
 - cechy/mocneStrony (scroll)
 + globalny ChangeButton
 - usunac index.js?
-
+- usunac secId
 
 

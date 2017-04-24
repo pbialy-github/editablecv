@@ -95,6 +95,18 @@ class ExperienceSection extends React.Component {
         this.setState({ experiences: this.state.experiences })
     };
 
+    moveExpDown(expNr) {
+        const movedExp = this.state.experiences.splice(expNr, 1)[0];
+        this.state.experiences.splice(expNr+1, 0, movedExp);
+        this.setState({ experiences: this.state.experiences })
+    };
+
+    moveExpUp(expNr) {
+        const movedExp = this.state.experiences.splice(expNr, 1)[0];
+        this.state.experiences.splice(expNr-1, 0, movedExp);
+        this.setState({ experiences: this.state.experiences })
+    };
+
     removeTask(expNr, taskNr) {
         this.state.experiences[expNr].tasks.splice(taskNr, 1);
         this.setState({ experiences: this.state.experiences })
@@ -127,19 +139,32 @@ class ExperienceSection extends React.Component {
                                 <EditField classes={'editDate'} val={exp.dateTo} updateState={this.updateState.bind(this, expNr, 'dateTo')}/>
                             </div>
                             <EditField classes={'editPosition'} val={exp.position} updateState={this.updateState.bind(this, expNr, 'position')}/>
+                        {(this.state.experiences.length > 1) && (
                             <button className={'expRemove'} onClick={this.removeExp.bind(this, expNr)}>-</button>
+                        )}
                             <button className={'addTask'} onClick={this.addTask.bind(this, expNr)}>+</button>
-                            <ul className={'tasks'}>
                             <br />
-                        {exp.tasks.map((task, taskNr) => (
-                            <li key={taskNr}>
-                                <EditField classes={'editTask'} val={task} updateState={this.updateStateFromList.bind(this, expNr, taskNr, 'task')} />
-                                {/*  <button id='changeColorBlue' className={'colorChanger'} style={{backgroundColor:'blue'}} /> */}
-                                <button className={'taskRemove'} onClick={this.removeTask.bind(this, expNr, taskNr)}>-</button>
-                                <br />
-                            </li>
-                        ))}
-                            </ul>
+                            <div className={'moveAndTasks'}>
+                                <div className={'moveExpButtons'}>
+                                    {(expNr > 0) && (
+                                    <button className={'expMoveUp'} onClick={this.moveExpUp.bind(this, expNr)}>⮝</button>
+                                )}
+                                {(expNr < this.state.experiences.length - 1) && (
+                                    <button className={'expMoveDown'} onClick={this.moveExpDown.bind(this, expNr)}>⮟</button>
+                                )}
+                                </div>
+                                <ul className={'tasksEditMode'}>
+                                {exp.tasks.map((task, taskNr) => (
+                                    <li key={taskNr}>
+                                        <EditField classes={'editTask'} val={task} updateState={this.updateStateFromList.bind(this, expNr, taskNr, 'task')} />
+                                    {(exp.tasks.length > 1) && (
+                                        <button className={'taskRemove'} onClick={this.removeTask.bind(this, expNr, taskNr)}>-</button>
+                                    )}
+                                        <br />
+                                    </li>
+                                ))}
+                                </ul>
+                            </div>
                         </div>
                     ) : (
                         <div>
